@@ -5,7 +5,7 @@ import FormatedDate from "./FormatedDate";
 
 export default function App(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
-
+  const [city, setCity] = useState(props.defaultCity);
   function handleResponse(response) {
     setWeatherData({
       ready: true,
@@ -15,10 +15,24 @@ export default function App(props) {
       date: new Date(response.data.dt * 1000),
       //   date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
-      icon: "https://cdn.icon-icons.com/icons2/2505/PNG/512/sun_weather_icon_150657.png",
+      icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       wind: response.data.wind.speed,
       city: response.data.name,
     });
+  }
+
+  function search() {
+    const apiKey = "fb4ad69a2bb4c6370849b9a18c3de8e4";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+  function handleCityChange(event) {
+    setCity(event.target.value);
   }
 
   if (weatherData.ready) {
@@ -39,12 +53,13 @@ export default function App(props) {
                 <br />
                 <img src={weatherData.icon} alt=""></img>
               </h1>
-              <form>
+              <form onSubmit={handleSubmit}>
                 <input
                   type="text"
                   className="form-control"
                   placeholder="Search"
                   autoComplete="off"
+                  onChange={handleCityChange}
                 />
                 <button type="button" className="btn btn-primary">
                   {" "}
@@ -76,10 +91,7 @@ export default function App(props) {
       </div>
     );
   } else {
-    const apiKey = "fb4ad69a2bb4c6370849b9a18c3de8e4";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-
+    search();
     return "Loading...";
   }
 }
