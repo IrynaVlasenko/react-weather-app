@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
 import FormatedDate from "./FormatedDate";
+import WeatherIcon from "./WeatherIcon";
 
 export default function App(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -15,7 +16,7 @@ export default function App(props) {
       date: new Date(response.data.dt * 1000),
       //   date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
-      icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: response.data.weather[0].icon,
       wind: response.data.wind.speed,
       city: response.data.name,
     });
@@ -51,7 +52,10 @@ export default function App(props) {
                   |<a href="/">33°F</a>
                 </span>
                 <br />
-                <img src={weatherData.icon} alt=""></img>
+                <WeatherIcon
+                  code={props.data.icon}
+                  alt={props.data.description}
+                />
               </h1>
               <form onSubmit={handleSubmit}>
                 <input
