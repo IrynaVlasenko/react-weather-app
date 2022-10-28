@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
+import FormatedDate from "./FormatedDate";
 
 export default function App(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -11,7 +12,7 @@ export default function App(props) {
       //   coordinates: response.data.coord,
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
-      date: "Monday 07:00",
+      date: new Date(response.data.dt * 1000),
       //   date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
       icon: "https://cdn.icon-icons.com/icons2/2505/PNG/512/sun_weather_icon_150657.png",
@@ -51,7 +52,10 @@ export default function App(props) {
                 </button>
               </form>
               <p>
-                Last updated:<span>Saturday</span>
+                Last updated:
+                <span>
+                  <FormatedDate date={weatherData.date} />
+                </span>
               </p>
               <p className="text-capitalize">{weatherData.description}</p>
               <p>
