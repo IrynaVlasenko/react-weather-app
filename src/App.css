@@ -6,29 +6,27 @@ body {
     max-width: 600px;
     width: 50%;
     margin: 50px auto;
-    background-color: #a1beee;
+    background: linear-gradient(109.6deg, rgb(0, 37, 84) 11.2%, rgba(0, 37, 84, 0.32) 100.2%);
     padding: 10px;
-    border: 1px solid #a1beee;
+    border: 1px solid #314F75;
     border-radius: 20px;
     margin-bottom: 0;
 }
 
 .card {
-    background-color: rgba(255, 118, 198, 0.623);
+    background: linear-gradient(180.3deg, rgb(221, 221, 221) 5.5%, rgb(110, 136, 161) 90.2%);
     border: 1px solid white;
 }
 
 h2 {
-    color: #bdd9f5;
+    color: #314F75;
     padding: 30px 0 0 30px;
 }
 
 h1 {
-    color: #bdd9f5;
+    color: #314F75;
 
     font-size: calc(2.375rem + 2.5vw);
-    border: 3px solid #a1beee;
-    border-radius: 80px;
     width: 55%;
     text-align: center;
     float: right;
@@ -39,7 +37,7 @@ h1 {
 }
 
 a.active {
-    color: white;
+    color: #314F75;
     text-decoration: none;
     cursor: default;
 }
@@ -51,6 +49,7 @@ a.active:hover {
 
 canvas {
     width: 100px;
+    margin-left: 30px;
 }
 
 .form-control {
@@ -60,8 +59,16 @@ canvas {
 
 p {
     margin-top: 15px;
-    color: #bdd9f5;
+    color: #314F75;
     text-align: right;
+}
+
+.float-left {
+    text-align: left;
+}
+
+.day {
+    color: #314F75;
 }
 
 h5 {
@@ -69,7 +76,7 @@ h5 {
     padding: 5px;
     color: white;
     text-align: center;
-    border: 1px solid #4798e7;
+    border: 1px solid #314F75;
 }
 
 .cont {
@@ -83,15 +90,17 @@ h5 {
     color: white;
     font-size: 24px;
     text-align: center;
-    background-color: #fbb3cc;
+    background-color: linear-gradient(109.6deg, rgb(0, 37, 84) 11.2%, rgba(0, 37, 84, 0.32) 100.2%);
 }
 
 .btn {
     margin-left: 20px;
+    background-color: #314F75;
+    border-color: #314F75;
 }
 
 .git-link,
 a[href*="week6"] {
-    color: black;
+    color: #314F75;
 
 }

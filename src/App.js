@@ -52,11 +52,10 @@ export default function App(props) {
                   |<a href="/">33°F</a>
                 </span>
                 <br />
-                <WeatherIcon
-                  code={props.data.icon}
-                  alt={props.data.description}
-                />
               </h1>
+
+              <WeatherIcon code={weatherData.icon} />
+
               <form onSubmit={handleSubmit}>
                 <input
                   type="text"
@@ -70,12 +69,11 @@ export default function App(props) {
                   Search
                 </button>
               </form>
-              <p>
-                Last updated:
-                <span>
-                  <FormatedDate date={weatherData.date} />
-                </span>
-              </p>
+              <p className="float-left">Last updated:</p>
+              <div>
+                <FormatedDate date={weatherData.date} className="day"/>
+              </div>
+
               <p className="text-capitalize">{weatherData.description}</p>
               <p>
                 Humidity <span>{weatherData.humidity}</span>%{" "}
