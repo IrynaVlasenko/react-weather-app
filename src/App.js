@@ -3,6 +3,7 @@ import axios from "axios";
 import "./App.css";
 import FormatedDate from "./FormatedDate";
 import WeatherIcon from "./WeatherIcon";
+import WeatherTemperature from "./WeatherTemperature";
 
 export default function App(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -43,16 +44,8 @@ export default function App(props) {
           <div className="card">
             <div className="card-body">
               <h2>{weatherData.city}</h2>
-              <h1>
-                <span>{Math.round(weatherData.temperature)}</span>
-                <span className="degrees">
-                  <a href="/" className="active">
-                    °C
-                  </a>
-                  |<a href="/">33°F</a>
-                </span>
-                <br />
-              </h1>
+              <WeatherTemperature celsius={weatherData.temperature} />
+              
 
               <WeatherIcon code={weatherData.icon} />
 
@@ -71,7 +64,7 @@ export default function App(props) {
               </form>
               <p className="float-left">Last updated:</p>
               <div>
-                <FormatedDate date={weatherData.date} className="day"/>
+                <FormatedDate date={weatherData.date} className="day" />
               </div>
 
               <p className="text-capitalize">{weatherData.description}</p>
