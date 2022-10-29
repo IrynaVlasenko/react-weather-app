@@ -45,7 +45,6 @@ export default function App(props) {
             <div className="card-body">
               <h2>{weatherData.city}</h2>
               <WeatherTemperature celsius={weatherData.temperature} />
-              
 
               <WeatherIcon code={weatherData.icon} />
 
@@ -80,7 +79,8 @@ export default function App(props) {
             This project was coded by Iryna Vlasenko and is {""}
             <a href="https://github.com/IrynaVlasenko/react-weather-app">
               open-sourced on GitHub
-            </a>
+            </a>{" "}
+            and <a href="https://cute-fudge-16b339.netlify.app/">Netlify</a>
           </footer>
         </div>
       </div>
